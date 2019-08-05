@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <title>ChatPage</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1 class="header">Meldings applikasjon</h1>
+        </div>
+        <form class="main" id="loginForm" onsubmit="login(event)">
+            <input class="loginInput" placeholder="Brukernavn..." id="username" required pattern="([\w]+)">
+            <button class="loginBtn">Logg inn</button>
+        </form>
+    </div>
+<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

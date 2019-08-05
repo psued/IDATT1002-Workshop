@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/popup.css"/>
+    <title>Application</title>
+    <script src="https://kit.fontawesome.com/fd41a25c61.js"></script>
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        <div class="navbar">
+            <div class="header">
+                <h3 id="currentUser"><i class="fas fa-user-circle userIcon"></i></h3>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Ressursovervåking</a></li>
+                    <li><a href="#">Logg</a></li>
+                    <li><a href="./settings.html">Innstillinger</a></li>
+                    <li><a href="/">Logg ut</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="chatList">
+            <div class="listHeader" onclick="toggleUserList()">
+                <h3> Samtaler <i id="dropdownIcon" class="fas fa-caret-down"></i></h3>
+            </div>
+
+            <ul id="userList">
+                <li onclick="openCalculator(); toggleUserList();"><i class="fas fa-user userIcon"></i>Kalkulator</li>
+            </ul>
+
+            <ul id="groupChatList">
+            </ul>
+
+            <div class="popup" id="formpopup">
+                <form class="popupContainer" autocomplete="off" onsubmit="createGroupChat(event); toggleUserList();">
+                    <div class="popupHeader">
+                        <h1>Gruppesamtale</h1>
+                        <label><b>Gruppenavn</b></label>
+                        <input class="popupInput" id="groupname" placeholder="Skriv inn navn på gruppesamtale" required pattern="[\w+]([\s\w+])+">
+                        <label><b>Velg deltakere</b></label> <br>
+                    </div>
+
+                    <div class="popupUsers">
+                        <ul id="userListGroupChat"></ul>
+                    </div>
+
+                    <div>
+                        <button class="popupBtn" >Legg til</button>
+                        <button onclick="closeForm(event)" class="popupBtn" id="popupBtnAbort">Avbryt</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="chat" id="chat">
+            <h2 class="usernameReceiver" id="usernameReceiver" ></h2>
+            <div class="messages" id="messages"></div>
+
+            <form class="chatInput" id="messageForm" autocomplete="off" onsubmit="postMessage(event)">
+                <input id="messageInput" class="textfield" type="text" placeholder="Melding...">
+                <button class="submitBtn">Send melding</button>
+            </form>
+
+            <form class="chatInput" id="calculateForm" autocomplete="off" onsubmit="submitExpression(event)">
+                <input id="expressionInput" class="textfield" type="text" placeholder="Regnestykke...">
+                <button class="submitBtn">Send regnestykke</button>
+            </form>
+
+            <form class="chatInput" id="groupChatForm" autocomplete="off" onsubmit="postGroupMessage(event)">
+                <input id="groupMessageInput" class="textfield" type="text" placeholder="Melding...">
+                <button class="submitBtn">Send melding</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/responsive.js"></script>
+    <script type="text/javascript" src="js/createElements.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/websocket.js"></script>
+    <script type="text/javascript" src="js/message.js"></script>
+    <script type="text/javascript" src="js/calculator.js"></script>
+    <script type="text/javascript" src="js/groupchat.js"></script>
+</body>
+</html>

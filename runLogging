@@ -1,0 +1,7 @@
+#!/bin/bash
+clear
+echo "Starting logsystem"
+cp glances.conf ~/.config/glances/glances.conf
+touch ~/Desktop/warnings.txt
+sleep 3
+sudo glances --export influxdb -q &

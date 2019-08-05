@@ -1,0 +1,63 @@
+.popup {
+    display: none;
+    border: 3px solid #355667;
+    z-index: 9;
+    position:fixed;
+    top: calc(50% - 250px);
+    left: calc(50% - 100px);
+}
+
+.popupContainer {
+    display:grid;
+    grid-template-rows: 5fr 5fr 1fr;
+    grid-template-areas: 'formheader' 'users' 'formbtn';
+    max-width: 300px;
+    padding: 10px;
+    background: #2C303C;
+    height: 500px;
+}
+
+.popupHeader {
+    grid-area:formheader;
+}
+.popupUsers {
+    grid-area: users;
+    overflow-y:auto;
+    user-select: none;
+}
+
+.popupInput{
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+.popupBtn {
+    grid-area: formbtn;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.8;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-radius:4px;
+    border:1px solid;
+    margin-top: 10px;
+    margin-left:20px;
+}
+
+#popupBtnAbort {
+    background: red
+}
+
+.popupContainer .popupBtn:hover, .openbtn:hover { opacity: 1; }
+
+@media only screen and (max-width: 480px) {
+    .popup {
+        top: 10%;
+        left: 7%;
+    }
+}

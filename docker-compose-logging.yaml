@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+  
+  influxdb:
+    image: influxdb
+    restart: always
+    environment:
+      INFLUXDB_DB: glances
+    ports:
+      - 8086:8086
+

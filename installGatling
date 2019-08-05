@@ -1,0 +1,6 @@
+#!/bin/bash
+wget https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/2.3.1/gatling-charts-highcharts-bundle-2.3.1-bundle.zip
+mv gatling-charts-highcharts-bundle-2.3.1-bundle.zip ~/Desktop
+cd ~/Desktop
+unzip gatling-charts-highcharts-bundle-2.3.1-bundle.zip
+echo Gatling Stress Tool installed

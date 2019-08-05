@@ -1,0 +1,39 @@
+
+.box {
+    background:white;
+    width:300px;
+    margin: 0 auto 0 auto;
+    padding-bottom: 70px;
+    border: #355667 4px solid;
+    align-self: center;
+    justify-self: center;
+}
+
+.newUsernameInput {
+    display: block;
+    margin:20px auto 10px auto;
+    padding:8px;
+    width:250px;
+    box-sizing: border-box;
+}
+
+.btn {
+    width:125px;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-radius:4px;
+    border:1px solid;
+    margin-top:15px;
+    margin-bottom:15px;
+    margin-left:16px;
+    float:left;
+    background: #2C303C;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: #5C9EAD;
+    border-color: #5C9EAD;
+    color: white;
+}

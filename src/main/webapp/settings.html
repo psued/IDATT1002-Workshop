@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innstillinger</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/settings.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1 class="header">Innstillinger</h1>
+        </div>
+        <div class="main">
+            <form class="box" id="editform" onsubmit="editUser(event)">
+                <input class="newUsernameInput"
+                       placeholder="Skriv inn nytt brukernavn"
+                       id="newUsername"
+                       autocomplete="off"
+                       pattern="([\w]+)">
+
+                <input class="newUsernameInput"
+                       placeholder="Skriv inn nytt passord"
+                       id="newPassword"
+                       autocomplete="off"
+                       type="password">
+
+                <button class="btn">Lagre</button>
+                <button class="btn" id="cancelButton" type="button">Avbryt</button>
+            </form>
+        </div>
+    </div>
+<script src="js/settings.js"></script>
+</body>
+</html>
