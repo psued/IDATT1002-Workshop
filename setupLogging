@@ -2,5 +2,4 @@
 clear
 echo "Setting up logsystem"
 sudo pip install influxdb
-mkdir ~/.config/glances
 sudo docker-compose -f docker-compose-logging.yaml up -d

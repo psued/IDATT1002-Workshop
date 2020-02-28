@@ -1,6 +1,4 @@
 #!/bin/bash
-cd gatling
-cp -r chat ~/Desktop/gatling-charts-highcharts-bundle-2.3.1/user-files/simulations
-cp usernames.csv ~/Desktop/gatling-charts-highcharts-bundle-2.3.1/user-files/data
-cd ~/Desktop/gatling-charts-highcharts-bundle-2.3.1/bin
-./gatling.sh
+cp -r gatling/chat ~/gatling-charts-highcharts-bundle-2.3.1/user-files/simulations
+cp gatling/usernames.csv ~/gatling-charts-highcharts-bundle-2.3.1/user-files/data
+~/gatling-charts-highcharts-bundle-2.3.1/bin/gatling.sh
