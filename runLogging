@@ -1,6 +1,12 @@
 #!/bin/bash
+
+if ! [ $(id -u) = 0 ]; then
+   echo "This script needs to be run as root." >&2
+   exit 1
+fi
+
 clear
-echo "Starting logsystem"
-touch ~/warnings.txt
-sleep 3
-sudo glances -C glances.conf --export influxdb -q &
+echo "Starting logsystem..."
+sudo -u $SUDO_USER touch ~/warnings.txt # Run as normal user, so the file is created in the right home directory
+glances -C glances.conf --export influxdb -q &
+echo "Done."
