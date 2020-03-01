@@ -134,8 +134,32 @@ devops/
 
 
 ## Endepunkter
-Endepunkt er URI som ressurser blir tilgjengelig på. Hvert endepunkt har en funskjon der de henter, legger til, eller endrer på informasjonen som tilhører adressen. 
-Et typisk endepunkt som bruker en GET-forespørsel henter ut HTML-side eller annen data fra server.
+Et endepunkt er definert med en URI, som i praksis er det samme som en URL. Endepunktene gir tilgang til såkalte ressurser, men en ressurs kan i praksis være
+hva som helst, så det er ikke så veldig spesifikt.
+I vår sammenheng kommer en ressurs til å være et sted vi enten kan hente data ut fra, eller sende data inn til. Alt som trengs for å sende/hente data
+er allerede programmert inn i systemet, så vi slipper å tenke på den delen. Det som er viktig for oss, er hvordan en URI er bygd opp, og hvilket HTTP-verb som
+brukes i sammenheng med den.
+
+Om en ser på oversikten over endepunkter vi har under, ser en at en del av URIene har klammeparenteser i seg. Disse klammeparentesene betyr at det er en variabel,
+og vil erstattes av en konkret verdi. Dette er mulig, fordi alle entitetene (se databasemodellen) får en ID når de opprettes, så disse er allerede tilgjengelige.
+Vi kan ta et eksempel:
+
+GET /user/{userId} vil bli f.eks. GET /user/1234, som vil hente ut all data for brukeren som har fått IDen '1234'
+PUT /user/{userId} vil bli f.eks. PUT /user/1234, og denne vil oppdatere data på brukeren med ID '1234'.
+
+POST blir en liten joker i dette tilfellet. Siden POST brukes for å opprette ting, og den tingen ikke har fått noen ID ennå (husk, denne IDen er det databasen
+selv om lager, ikke noe vi skal sende med), så blir URIen for å opprette en bruker blir simpelthen:
+
+POST /user
+
+Jeg skrev at POST brukes for å opprette ting, men dette er en sannhet med modifikasjoner. POST brukes også for å sende inn data som serveren trenger for å utføre
+oppgaver, selv om den ikke oppretter noe. Kalkulatoren er et godt eksempel på dette, hvor man må sende inn regnestykket man vil ha utført, men som ikke oppretter
+noe i databasen.
+
+Data blir sendt i kroppen på HTTP-requesten/responsen, i et format som kalles JSON. Som tidligere nevnt, dette er noe som allerede systemet tar seg av for oss,
+slik at vi slipper å tenke på det. Det eneste som kan være viktig i denne sammenhengen, er annotasjonene @Consumes og @Produces (se segmentet "Informasjon om server").
+Disse vil alltid være JSON for vår del, og det finnes eksempler på hvordan man gjør det i koden, noe som kan være greit å huske til man skal implementere egne 
+endepunkter, samt hvilket HTTP-verb man skal bruke (dette er stort sett oppgitt i oppgavene).
 
 | Endepunkt                         | Verb  | Hva                                       | Type  |
 | ---------                         | ---   | ---                                       | ----  |
