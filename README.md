@@ -161,22 +161,22 @@ slik at vi slipper å tenke på det. Det eneste som kan være viktig i denne sam
 Disse vil alltid være JSON for vår del, og det finnes eksempler på hvordan man gjør det i koden, noe som kan være greit å huske til man skal implementere egne 
 endepunkter, samt hvilket HTTP-verb man skal bruke (dette er stort sett oppgitt i oppgavene).
 
-| Endepunkt                         | Verb  | Hva                                       | Type  |
-| ---------                         | ---   | ---                                       | ----  |
-| /                                 | GET   | Loginside                                 | HTML  |
-| /app.html                         | GET   | Applikasjonside                           | HTML  |
-| /settings.html                    | GET   | Innstillingside                           | HTML  |
-| /user                             | GET   | Hent alle brukere                         | Data  |
-|                                   | POST  | Legge til bruker                          | Data  | 
-| /user/{userId}                    | PUT   | Endre bruker                              | Data  |
-| /message/{userId1}/{userId2}      | GET   | Hent meldinger mellom to brukere          | Data  |
-| /message                          | POST  | Legge til ny melding                      | Data  |
-| /groupchat                        | POST  | Legge til ny gruppechat                   | Data  |
-| /groupchat/{groupChatId}          | GET   | Hent ut et gruppechat objekt              | Data  |
-| /groupchat/{groupChatId}/message  | GET   | Hent ut meldinger til en gruppechat       | Data  |
-|                                   | POST  | Legge til ny melding                      | Data  |
-| /groupchat/user/{userId}          | GET   | Hent ut alle gruppechatter for en bruker  | Data  |
-| /calculator                       | POST  | Send inn regnestykke til kalkulatorbot    | Data  |
+| Endepunkt                         | Verb  | Hva                                       | Type      |
+| ---------                         | ---   | ---                                       | ----      |
+| /                                 | GET   | Loginside                                 | HTML-fil  |
+| /app.html                         | GET   | Applikasjonside                           | HTML-fil  |
+| /settings.html                    | GET   | Innstillingside                           | HTML-fil  |
+| /user                             | GET   | Hent alle brukere                         | Data      |
+|                                   | POST  | Legge til bruker                          | Data      | 
+| /user/{userId}                    | PUT   | Endre bruker                              | Data      |
+| /message/{userId1}/{userId2}      | GET   | Hent meldinger mellom to brukere          | Data      |
+| /message                          | POST  | Legge til ny melding                      | Data      |
+| /groupchat                        | POST  | Legge til ny gruppechat                   | Data      |
+| /groupchat/{groupChatId}          | GET   | Hent ut et gruppechat objekt              | Data      |
+| /groupchat/{groupChatId}/message  | GET   | Hent ut meldinger til en gruppechat       | Data      |
+|                                   | POST  | Legge til ny melding                      | Data      |
+| /groupchat/user/{userId}          | GET   | Hent ut alle gruppechatter for en bruker  | Data      |
+| /calculator                       | POST  | Send inn regnestykke til kalkulatorbot    | Data      |
 
 
 ## Databasemodell
@@ -219,8 +219,12 @@ webtjenester som er RESTful. I resource filene brukes det følgende annoteringer
 - @Consumes
 - @Produces
 
-@Path bestemmer hvilke adresse ressursene skal være tilgjengelige på. @GET, @POST og @PUT setter hvilke HTTP verb metoden
-svarer til. @Consumes og @Produces definerer hva metodene tar inn, og returnerer. 
+@Path bestemmer hvilke adresse ressursene skal være tilgjengelige  (se segmentet om endepunkter).
+
+@GET, @POST og @PUT setter hvilke HTTP verb metoden svarer på. F.eks., en metode med @GET vil ikke svare om det kommer
+inn en forespørsel til den samme adressen, dersom klienten bruker HTTP-verbet POST. 
+
+@Consumes og @Produces definerer formatet på data som kommer inn og formatet på data metoden returnerer (JSON, for oss). 
 
 Websocket er nødvendig for å hente inn nye chatmeldinger etterhvert som de skrives. Alternativet til websockets er å 
 hele tiden sende forespørsler for å sjekke om det er noen nye meldinger tilgjengelig.
