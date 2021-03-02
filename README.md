@@ -17,8 +17,7 @@ Chat applikasjon med RESTful Java backend (JAX-RS).
 
 
 ## Hvordan kjøre prosjektet lokalt
-For å kjøre prosjektet lokalt trenger man Maven på maskinen. Det kan lastes ned [her](https://maven.apache.org/download.cgi). Pakk ut Maven og les README som
-følger med for å innstallere Maven.
+For å kjøre prosjektet lokalt trenger man Maven på maskinen. Først, sjekk om det allerede er installert. Hvis ikke, kan det lastes ned [her](https://maven.apache.org/download.cgi). Pakk ut Maven og les README som følger med for å innstallere Maven.
 
 
 For at meldingsapplikasjonen skal fungere trenger man en tilkobling til database for lokal kjøring. Drifterne setter opp databaser på VM. 
