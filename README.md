@@ -198,10 +198,10 @@ dockerfiler til drifterene, som kun trenger å bruke dockerfilene for å kjøre 
 
 ## Informasjon om server
 Server består av fire mapper:
-- dao
-- data
-- resources
-- websocket
+- `dao`
+- `data`
+- `resources`
+- `websocket`
 
 DAO står for Data Access Object, og brukes av systemet for å kommunisere med databasen. I `dao`-mappa finner vi også 
 klassen `Database`, som er filen som sørger for tilkobling til databasen. Ved hjelp av `dao`-klassene kan vi bruke java-objekter til å kommunisere med databasen.
