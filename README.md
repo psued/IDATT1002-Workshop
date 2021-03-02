@@ -21,7 +21,7 @@ For å kjøre prosjektet lokalt trenger man Maven på maskinen. Først, sjekk om
 
 
 For at meldingsapplikasjonen skal fungere trenger man en tilkobling til database for lokal kjøring. Drifterne setter opp databaser på VM. 
-I filen Databse.java må IP til VM legges til i varaiabelen "IP_TO_VM"
+I filen Database.java må IP til VM legges til i varaiabelen "IP_TO_VM"
 
 Når Maven er installert, og databasetilkobling er satt opp kan prosjektet kjøres med følgende kommando:
 ```text
