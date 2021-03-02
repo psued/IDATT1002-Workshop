@@ -147,7 +147,7 @@ GET /user/{userId} vil bli f.eks. GET /user/1234, som vil hente ut all data for 
 PUT /user/{userId} vil bli f.eks. PUT /user/1234, og denne vil oppdatere data på brukeren med ID '1234'.  
 
 POST blir en liten joker i dette tilfellet. Siden POST brukes for å opprette ting, og den tingen ikke har fått noen ID ennå (husk, denne IDen er det databasen
-selv om lager, ikke noe vi skal sende med), så blir URIen for å opprette en bruker blir simpelthen:
+selv om lager, ikke noe vi skal sende med), så blir URIen for å opprette en bruker simpelthen:
 
 POST /user
 
