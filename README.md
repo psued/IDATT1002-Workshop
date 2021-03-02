@@ -186,12 +186,12 @@ endepunkter, samt hvilket HTTP-verb man skal bruke (dette er stort sett oppgitt 
 Dette systemet bruker Maven. Maven er et verktøy som hjelper til å håndtere dependencies i systemet. Ved å bruke Maven 
 forsikrer man at alle bruker samme versjon av depencies, og at man lett kan endre de på kun ett sted, dersom det 
 endres hva som trengs for å kjøre systemet. I tillegg brukes Maven både til å kompilere systemet og kjøre tester. 
-Dependencies deklareres i filen pom.xml. Filen web.xml brukes for å sette URLer i den ferdig kompilerte applikasjonen.
+Dependencies deklareres i filen pom.xml. Filen `web.xml` brukes for å sette URLer i den ferdig kompilerte applikasjonen.
 
 Docker er et verktøy som lar oss kjøre forskjellige programmer i egne konteinere for kjøring av systemet. Dette 
 er blant annet database, testdatabase, database klient og server som kan kjøre chat applikasjonen. Filene som brukes til dette er 
 Dockerfile og docker-compose. Dockerfile er en fil med oppskrift til hvordan en enkelt konteiner skal bygges. Filene 
-som starter med _docker-compose_ er oppsett av flere konteinere i samme miljø. Her er også en av fordelene at man lett kan
+som starter med `docker-compose` er oppsett av flere konteinere i samme miljø. Her er også en av fordelene at man lett kan
 bytte verktøy som brukes, eller versjoner av verktøyene. Ved hjelp av docker kan utviklerene enkelt levere kode og 
 dockerfiler til drifterene, som kun trenger å bruke dockerfilene for å kjøre og rulle ut systemet. 
 
