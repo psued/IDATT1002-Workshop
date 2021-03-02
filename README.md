@@ -203,26 +203,26 @@ Server består av fire mapper:
 - resources
 - websocket
 
-DAO står for Data Access Object, og brukes av systemet for å kommunisere med databasen. I _dao_-mappa finner vi også 
-klassen _Database_, som er filen som sørger for tilkobling til databasen. Ved hjelp av dao-klassene kan vi bruke java-objekter til å kommunisere med databasen.
+DAO står for Data Access Object, og brukes av systemet for å kommunisere med databasen. I `dao`-mappa finner vi også 
+klassen `Database`, som er filen som sørger for tilkobling til databasen. Ved hjelp av `dao`-klassene kan vi bruke java-objekter til å kommunisere med databasen.
 
-I mappa _data_ finner vi objektklassene som brukes i systemet. Vi har _GroupChat_, _Message_ og _User_.
+I mappa `data` finner vi objektklassene som brukes i systemet. Vi har `GroupChat`, `Message` og `User`.
 
 Resources er filene som brukes for kommunikasjon mellom klient og server. Her brukes rammeverket JAX-RS for å lage
 webtjenester som er RESTful. I resource filene brukes det følgende annoteringer:
-- @Path
-- @GET
-- @POST
-- @PUT
-- @Consumes
-- @Produces
+- `@Path`
+- `@GET`
+- `@POST`
+- `@PUT`
+- `@Consumes`
+- `@Produces`
 
-@Path bestemmer hvilke adresse ressursene skal være tilgjengelige  (se segmentet om endepunkter).
+`@Path` bestemmer hvilke adresse ressursene skal være tilgjengelige  (se segmentet om endepunkter).
 
-@GET, @POST og @PUT setter hvilke HTTP verb metoden svarer på. F.eks., en metode med @GET vil ikke svare om det kommer
-inn en forespørsel til den samme adressen, dersom klienten bruker HTTP-verbet POST. 
+`@GET`, `@POST` og `@PUT` setter hvilke HTTP verb metoden svarer på. F.eks., en metode med `@GET` vil ikke svare om det kommer
+inn en forespørsel til den samme adressen, dersom klienten bruker HTTP-verbet `POST`. 
 
-@Consumes og @Produces definerer formatet på data som kommer inn og formatet på data metoden returnerer (JSON, for oss). 
+`@Consumes` og `@Produces` definerer formatet på data som kommer inn og formatet på data metoden returnerer (JSON, for oss). 
 
 Websocket er nødvendig for å hente inn nye chatmeldinger etterhvert som de skrives. Alternativet til websockets er å 
 hele tiden sende forespørsler for å sjekke om det er noen nye meldinger tilgjengelig.
