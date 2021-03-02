@@ -184,14 +184,14 @@ endepunkter, samt hvilket HTTP-verb man skal bruke (dette er stort sett oppgitt 
 
 ## Docker og Maven
 Dette systemet bruker Maven. Maven er et verktøy som hjelper til å håndtere dependencies i systemet. Ved å bruke Maven 
-forsikrer man at alle bruker samme versjon av depencies, og at man lett kan endre de på kun et sted, dersom det 
+forsikrer man at alle bruker samme versjon av depencies, og at man lett kan endre de på kun ett sted, dersom det 
 endres hva som trengs for å kjøre systemet. I tillegg brukes Maven både til å kompilere systemet og kjøre tester. 
 Dependencies deklareres i filen pom.xml. Filen web.xml brukes for å sette URLer i den ferdig kompilerte applikasjonen.
 
 Docker er et verktøy som lar oss kjøre forskjellige programmer i egne konteinere for kjøring av systemet. Dette 
 er blant annet database, testdatabase, database klient og server som kan kjøre chat applikasjonen. Filene som brukes til dette er 
 Dockerfile og docker-compose. Dockerfile er en fil med oppskrift til hvordan en enkelt konteiner skal bygges. Filene 
-som starter med docker-compose er oppsett av flere konteinere i samme miljø. Her er også en av fordelene at man lett kan
+som starter med _docker-compose_ er oppsett av flere konteinere i samme miljø. Her er også en av fordelene at man lett kan
 bytte verktøy som brukes, eller versjoner av verktøyene. Ved hjelp av docker kan utviklerene enkelt levere kode og 
 dockerfiler til drifterene, som kun trenger å bruke dockerfilene for å kjøre og rulle ut systemet. 
 
@@ -203,11 +203,10 @@ Server består av fire mapper:
 - resources
 - websocket
 
-DAO står for Data Access Object, og brukes av systemet for å kommunisere med databasen. I dao mappa finner vi også 
-klassen Database, som er filen som sørger for tilkobling til databasen. Ved hjelp av dao klassene kan vi bruke java 
-objekter til å kommunisere med databasen.
+DAO står for Data Access Object, og brukes av systemet for å kommunisere med databasen. I _dao_-mappa finner vi også 
+klassen _Database_, som er filen som sørger for tilkobling til databasen. Ved hjelp av dao-klassene kan vi bruke java-objekter til å kommunisere med databasen.
 
-I data mappa finner vi objektklassene som brukes i systemet. Vi har GroupChat, Message og User.
+I mappa _data_ finner vi objektklassene som brukes i systemet. Vi har _GroupChat_, _Message_ og _User_.
 
 Resources er filene som brukes for kommunikasjon mellom klient og server. Her brukes rammeverket JAX-RS for å lage
 webtjenester som er RESTful. I resource filene brukes det følgende annoteringer:
