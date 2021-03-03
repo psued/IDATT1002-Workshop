@@ -9,7 +9,7 @@ services:
       - 3000:3000
   
   influxdb:
-    image: influxdb
+    image: influxdb:1.7
     restart: always
     environment:
       INFLUXDB_DB: glances
