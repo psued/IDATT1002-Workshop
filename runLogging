@@ -7,6 +7,5 @@ fi
 
 clear
 echo "Starting logsystem..."
-sudo -u $SUDO_USER touch ~/warnings.txt # Run as normal user, so the file is created in the right home directory
-glances -C glances.conf --export influxdb -q &
+glances -C glances.conf --export influxdb2 -q &
 echo "Done."
