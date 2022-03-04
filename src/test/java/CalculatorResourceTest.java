@@ -24,7 +24,7 @@ public class CalculatorResourceTest{
         assertEquals(400, calculatorResource.sum(expression));
 
         expression = "300+99";
-        assertEquals(400, calculatorResource.sum(expression));
+        assertEquals(399, calculatorResource.sum(expression));
     }
 
     @Test
@@ -35,6 +35,6 @@ public class CalculatorResourceTest{
         assertEquals(899, calculatorResource.subtraction(expression));
 
         expression = "20-2";
-        assertEquals(200, calculatorResource.subtraction(expression));
+        assertEquals(18, calculatorResource.subtraction(expression));
     }
 }
