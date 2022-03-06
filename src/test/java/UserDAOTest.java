@@ -194,4 +194,27 @@ public class UserDAOTest extends JerseyTest {
         assertEquals(expectedUsername,actualUsername);
         assertNotEquals(beforeNewUser,afterNewUser);
     }
+
+    @Test
+    public void testGenerateSalt(){
+        byte[] bytes1 = userDAO.generateSalt();
+        byte[] bytes2 = userDAO.generateSalt();
+        assertNotEquals(bytes1.toString(),bytes2.toString());
+    }
+
+    @Test
+    public void testHashPassword(){
+        byte[] salt1 = userDAO.generateSalt();
+        byte[] salt2 = userDAO.generateSalt();
+        String password1 = "password";
+        String password2 = "password2";
+        String hashedPass1 = userDAO.hashPassword(password1, salt1);
+        String hashedPass1_1 = userDAO.hashPassword(password1, salt1);
+        assertEquals(hashedPass1,hashedPass1_1);
+        String hashedPass2 = userDAO.hashPassword(password2, salt1);
+        assertNotEquals(hashedPass1,hashedPass2);
+        String hashedPass2_2 = userDAO.hashPassword(password2, salt2);
+        assertNotEquals(hashedPass1,hashedPass2_2);
+        assertNotEquals(hashedPass2,hashedPass2_2);
+    }
 }

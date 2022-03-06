@@ -2,6 +2,7 @@ package dao;
 
 import data.User;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -183,7 +184,9 @@ public class UserDAO {
      * @return a random salt
      */
     public byte[] generateSalt() {
-        return null;
+        byte [] randomBytes = new byte[16];
+         new SecureRandom().nextBytes(randomBytes);
+         return randomBytes;
     }
 
     /**
@@ -192,8 +195,24 @@ public class UserDAO {
      * @param salt salt to use when hashing
      * @return hashedPassword, null if unsuccessful
      */
-    public String hashPassword(String password, byte[] salt){
-        return null;
+    public String hashPassword(String password, byte[] salt) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        md.update(salt);
+        byte[] hashedSaltedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        return byteArrayToString(hashedSaltedPassword);
+    }
+
+    public String byteArrayToString(final byte [] bytes) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < bytes.length; i++){
+            stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        return stringBuilder.toString();
     }
 
     /**
