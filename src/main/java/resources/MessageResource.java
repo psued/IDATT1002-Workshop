@@ -3,8 +3,8 @@ package resources;
 import dao.MessageDAO;
 import data.Message;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 /**

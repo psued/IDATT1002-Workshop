@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.core.Application;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
