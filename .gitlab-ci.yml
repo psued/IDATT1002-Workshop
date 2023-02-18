@@ -5,8 +5,8 @@ image: alpine
 build:
   image: docker:20.10.16
   # run on a gitlab-runner that is configured with docker-in-docker
-  #tags:
-  #  - dind
+  tags:
+    - 'Public Gitlab Runner 2 - NTNU'
   stage: build
   services:
     - docker:20.10.16-dind
