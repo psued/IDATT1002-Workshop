@@ -8,10 +8,6 @@ build:
   tags:
     - dind
   stage: build
-  # only for git tags
-  only:
-    - tags
-
   services:
     - docker:20.10.16-dind
 
