@@ -1,17 +1,13 @@
-# Use root/example as user/password credentials
-version: '3.1'
-
+version: '3.3'
 services:
-
-  monitoring:
-    image: nicolargo/glances:latest-alpine
+  glances:
     restart: always
-    pid: host
-    volumes:
-    #  - ./glances.conf:/glances/conf/glances.conf
-      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - '61208-61209:61208-61209'
     environment:
-      - "GLANCES_OPT=-w"
-    labels:
-      - "traefik.port=61208"
-      - "traefik.frontend.rule=Host:glances.docker.localhost"
+      - 'GLANCES_OPT=-w'
+    volumes:
+      - ./glances.conf:/glances/conf/glances.conf
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+    pid: host
+    image: docker.io/nicolargo/glances
