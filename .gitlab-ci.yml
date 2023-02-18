@@ -6,7 +6,7 @@ build:
   image: docker:20.10.16
   # run on a gitlab-runner that is configured with docker-in-docker
   tags:
-    - 'Public Gitlab Runner 2 - NTNU'
+    - b4hL_Jpq
   stage: build
   services:
     - docker:20.10.16-dind
