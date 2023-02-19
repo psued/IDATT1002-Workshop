@@ -15,17 +15,21 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>${mvn.compiler.pugin.version}</version>
                 <inherited>true</inherited>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.19.v20190610</version>
+                <version>${jettyVersion}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${mvn.war.pugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -43,6 +47,12 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${javax.ws.rs-api.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
@@ -77,15 +87,22 @@
         <dependency>
             <groupId>org.glassfish.jersey.test-framework.providers</groupId>
             <artifactId>jersey-test-framework-provider-jetty</artifactId>
-            <version>2.26</version>
+            <version>3.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- TEST DEPENDENCIES END -->
         <dependency>
             <groupId>c3p0</groupId>
@@ -109,7 +126,12 @@
         </dependency>
     </dependencies>
     <properties>
-        <jersey.version>2.26</jersey.version>
+        <jersey.version>3.1.1</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jettyVersion>11.0.13</jettyVersion>
+        <junit.version>5.8.1</junit.version>
+        <mvn.compiler.pugin.version>3.10.1</mvn.compiler.pugin.version>
+        <mvn.war.pugin.version>3.3.1</mvn.war.pugin.version>
+        <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
     </properties>
 </project>

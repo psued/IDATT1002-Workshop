@@ -3,8 +3,8 @@ package resources;
 import dao.UserDAO;
 import data.User;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;

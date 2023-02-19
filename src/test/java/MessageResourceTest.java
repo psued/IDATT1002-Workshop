@@ -3,12 +3,13 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import resources.MessageResource;
 
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -17,11 +18,17 @@ public class MessageResourceTest extends JerseyTest {
     private int user1 = 1, user2 = 2;
     private Message message = new Message();
 
+
     @Override
     public Application configure() {
         enable(TestProperties.LOG_TRAFFIC);
         enable(TestProperties.DUMP_ENTITY);
         return new ResourceConfig(MessageResource.class);
+    }
+
+    @BeforeEach
+    void init() throws Exception {
+        super.setUp();
     }
 
     @Test
