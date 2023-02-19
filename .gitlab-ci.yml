@@ -2,32 +2,6 @@
 # Full project: https://gitlab.com/pages/doxygen
 image: alpine
 
-build:
-  image: docker:20.10.16
-  # run on a gitlab-runner that is configured with docker-in-docker
-  tags:
-    - docker
-  stage: build
-  services:
-    - docker:20.10.16-dind
-
-  variables:
-    # use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
-    # mounts /certs directory for the service and build container
-    # needed for the Docker client to use the certificates
-    DOCKER_TLS_CERTDIR: "/certs"
-
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-
-  script:
-    # use previous image as a cache to speedup build process
-    - docker pull $CI_REGISTRY_IMAGE:latest || true
-    # use git tag to tag the image
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-    - docker push $CI_REGISTRY_IMAGE:latest
-
 pages:
   script:
   - apk update && apk add doxygen
