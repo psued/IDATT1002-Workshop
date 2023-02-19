@@ -2,6 +2,7 @@
 Chat applikasjon med RESTful Java backend (JAX-RS).
 
 
+
 ## Innhold
 - [Hvordan kjøre prosjektet lokalt](#hvordan-kjøre-prosjektet-lokalt)
 - [JavaDocs](#javadocs)
