@@ -4,11 +4,12 @@ import data.Message;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import jakarta.ws.rs.core.Application;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,8 +17,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class MessageDAOTest extends JerseyTest {
     private Connection connection;
@@ -25,7 +27,7 @@ public class MessageDAOTest extends JerseyTest {
     private Statement statement;
     private int user1 = 1, user2 = 2;
 
-    @Before
+    @BeforeEach
     public void SetUp () {
         try{
             connection = Database.instance().getConnection();
@@ -131,7 +133,7 @@ public class MessageDAOTest extends JerseyTest {
         }
     }
 
-    @After
+    @AfterEach
     public void tearDown () {
         try {
             messageDAO = null;
@@ -186,8 +188,8 @@ public class MessageDAOTest extends JerseyTest {
         List<String> afterNewMessage = new ArrayList<>();
         for (Message message1 : messageList) afterNewMessage.add(message1.getMessageContent());
 
-        assertNotEquals("Should not be equal, adding new message to list",beforeNewMessage.size(),afterNewMessage.size());
-        assertEquals("Should be equal",expectedMessage,actualMessage);
+        assertNotEquals(beforeNewMessage.size(),afterNewMessage.size());
+        assertEquals(expectedMessage,actualMessage);
 
     }
 }

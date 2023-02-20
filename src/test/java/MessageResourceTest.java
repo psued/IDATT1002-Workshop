@@ -47,7 +47,7 @@ public class MessageResourceTest extends JerseyTest {
         message.setMessageContent("Testing newMessage method");
         Response output = target("message").request().post(Entity.entity(message, MediaType.APPLICATION_JSON_TYPE));
 
-        assertEquals("Should return status 200",200,output.getStatus());
+        assertEquals(200,output.getStatus());
         assertEquals("Testing newMessage method",message.getMessageContent());
         assertEquals("application/json",output.getHeaderString("Content-type"));
     }
