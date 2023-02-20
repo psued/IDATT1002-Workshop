@@ -26,11 +26,6 @@ public class MessageResourceTest extends JerseyTest {
         return new ResourceConfig(MessageResource.class);
     }
 
-    @BeforeEach
-    void init() throws Exception {
-        super.setUp();
-    }
-
     @Test
     public void testGetMessages(){
         Response output = target("message/"+user1+"/"+user2).request().get();
