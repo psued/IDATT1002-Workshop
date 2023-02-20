@@ -4,25 +4,27 @@ import data.User;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import jakarta.ws.rs.core.Application;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class UserDAOTest extends JerseyTest {
     private Connection connection;
     private Statement statement;
     private UserDAO userDAO;
 
-    @Before
+    @BeforeEach
     public void SetUp () {
         try {
             connection = Database.instance().getConnection();
@@ -132,7 +134,7 @@ public class UserDAOTest extends JerseyTest {
         }
     }
 
-    @After
+    @AfterEach
     public void tearDown () {
         try {
             userDAO = null;

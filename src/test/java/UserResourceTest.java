@@ -3,7 +3,7 @@ import data.User;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import resources.UserResource;
 
 import jakarta.ws.rs.client.Entity;
