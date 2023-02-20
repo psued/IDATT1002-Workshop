@@ -1,11 +1,6 @@
 import dao.Database;
 import dao.MessageDAO;
 import data.Message;
-import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.test.JerseyTest;
-import org.glassfish.jersey.test.TestProperties;
-
-import jakarta.ws.rs.core.Application;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class MessageDAOTest extends JerseyTest {
+public class MessageDAOTest {
     private Connection connection;
     private MessageDAO messageDAO;
     private Statement statement;
@@ -144,16 +139,6 @@ public class MessageDAOTest extends JerseyTest {
             se.printStackTrace();
         }
     }
-
-
-    @Override
-    public Application configure() {
-        enable(TestProperties.LOG_TRAFFIC);
-        enable(TestProperties.DUMP_ENTITY);
-        forceSet(TestProperties.CONTAINER_PORT, "0");
-        return new ResourceConfig(MessageDAO.class);
-    }
-
 
     @Test
     public void testGetMessage () {

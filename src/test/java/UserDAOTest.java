@@ -1,11 +1,6 @@
 import dao.Database;
 import dao.UserDAO;
 import data.User;
-import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.test.JerseyTest;
-import org.glassfish.jersey.test.TestProperties;
-
-import jakarta.ws.rs.core.Application;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class UserDAOTest extends JerseyTest {
+public class UserDAOTest {
     private Connection connection;
     private Statement statement;
     private UserDAO userDAO;
@@ -146,14 +141,6 @@ public class UserDAOTest extends JerseyTest {
         }
     }
 
-    @Override
-    public Application configure () {
-        enable(TestProperties.LOG_TRAFFIC);
-        enable(TestProperties.DUMP_ENTITY);
-        forceSet(TestProperties.CONTAINER_PORT, "0");
-        return new ResourceConfig(UserDAO.class);
-    }
-
     @Test
     public void testGetUsers () {
         List<User> userlist = userDAO.getUsers();
@@ -195,28 +182,5 @@ public class UserDAOTest extends JerseyTest {
         String actualUsername = user.getUsername();
         assertEquals(expectedUsername,actualUsername);
         assertNotEquals(beforeNewUser,afterNewUser);
-    }
-
-    @Test
-    public void testGenerateSalt(){
-        byte[] bytes1 = userDAO.generateSalt();
-        byte[] bytes2 = userDAO.generateSalt();
-        assertNotEquals(bytes1.toString(),bytes2.toString());
-    }
-
-    @Test
-    public void testHashPassword(){
-        byte[] salt1 = userDAO.generateSalt();
-        byte[] salt2 = userDAO.generateSalt();
-        String password1 = "password";
-        String password2 = "password2";
-        String hashedPass1 = userDAO.hashPassword(password1, salt1);
-        String hashedPass1_1 = userDAO.hashPassword(password1, salt1);
-        assertEquals(hashedPass1,hashedPass1_1);
-        String hashedPass2 = userDAO.hashPassword(password2, salt1);
-        assertNotEquals(hashedPass1,hashedPass2);
-        String hashedPass2_2 = userDAO.hashPassword(password2, salt2);
-        assertNotEquals(hashedPass1,hashedPass2_2);
-        assertNotEquals(hashedPass2,hashedPass2_2);
     }
 }

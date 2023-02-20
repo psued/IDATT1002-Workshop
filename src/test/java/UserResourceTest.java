@@ -11,7 +11,8 @@ import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserResourceTest extends JerseyTest {
     private final UserResource userResource = new UserResource();
@@ -29,7 +30,7 @@ public class UserResourceTest extends JerseyTest {
     @Test
     public void testNewUser(){
         Response output = target("/user").request().post(Entity.entity(user, MediaType.APPLICATION_JSON));
-        assertEquals("Should return status 200",200,output.getStatus());
+        assertEquals(200,output.getStatus());
         assertEquals("application/json",output.getHeaderString("Content-type"));
         assertEquals("username", userResource.newUser(user).getUsername());
     }
@@ -37,8 +38,8 @@ public class UserResourceTest extends JerseyTest {
     @Test
     public void testGetUsers(){
         Response output = target("/user").request().get();
-        assertEquals("should return status 200", 200, output.getStatus());
-        assertNotNull("Should return user list", output.getEntity().toString());
+        assertEquals(200, output.getStatus());
+        assertNotNull(output.getEntity().toString());
         assertEquals("application/json",output.getHeaderString("Content-type"));
     }
 

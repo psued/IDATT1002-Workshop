@@ -2,7 +2,7 @@ import data.Message;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import resources.MessageResource;
 
@@ -11,8 +11,8 @@ import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MessageResourceTest extends JerseyTest {
     private int user1 = 1, user2 = 2;
@@ -34,7 +34,7 @@ public class MessageResourceTest extends JerseyTest {
     @Test
     public void testGetMessages(){
         Response output = target("message/"+user1+"/"+user2).request().get();
-        assertEquals("Should return status 200", 200, output.getStatus());
+        assertEquals(200, output.getStatus());
         assertEquals("application/json",output.getHeaderString("Content-type"));
 
         assertNotNull(output.getEntity());
