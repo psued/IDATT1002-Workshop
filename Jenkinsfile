@@ -7,6 +7,7 @@ pipeline {
         stage('Test') {
             steps{
                 echo 'Test'
+                sh 'sudo chown $(whoami):$(whoami) /var/run/docker.sock'
                 sh 'docker-compose -f docker-compose-test.yaml up -d'
                 withEnv(["DB_CHOICE=localhost"]) {
                     sh 'mvn clean test'
