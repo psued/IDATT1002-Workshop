@@ -16,7 +16,6 @@ function login(event){
     event.preventDefault();
     let user = {
         "username": document.getElementById('username').value,
-        "password": document.getElementById('password').value
     };
 
     fetch('../api/user', {
