@@ -15,7 +15,7 @@ build:
     # use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
     # mounts /certs directory for the service and build container
     # needed for the Docker client to use the certificates
-    DOCKER_TLS_CERTDIR: "/certs"
+    # DOCKER_TLS_CERTDIR: "/certs"
 
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
