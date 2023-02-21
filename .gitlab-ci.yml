@@ -27,7 +27,7 @@ build:
     # use previous image as a cache to speedup build process
     # - docker pull $CI_REGISTRY_IMAGE:latest || true
     # use git tag to tag the image
-    - docker build -f Dockerfile --tag $CI_REGISTRY_IMAGE:latest .
+    - docker build -f GitlabDockerfile --tag $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
     - docker -v
 
