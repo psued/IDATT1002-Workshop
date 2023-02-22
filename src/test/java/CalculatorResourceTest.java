@@ -13,7 +13,7 @@ public class CalculatorResourceTest{
         assertEquals(400, calculatorResource.calculate(expression));
 
         expression = " 300 - 99 ";
-        assertEquals(200, calculatorResource.calculate(expression));
+        assertEquals(201, calculatorResource.calculate(expression));
     }
 
     @Test
