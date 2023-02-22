@@ -16,6 +16,7 @@ public class CalculatorResourceTest{
         assertEquals(201, calculatorResource.calculate(expression));
     }
 
+
     @Test
     public void testSum(){
         CalculatorResource calculatorResource = new CalculatorResource();
