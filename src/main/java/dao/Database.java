@@ -18,7 +18,7 @@ public class Database {
     private static boolean isTest = isJUnitTest();
 
 
-    private static final String IP_TO_VM = "IP_TO_VM";
+    private static final String IP_TO_VM = "INSERT_IP_TO_YOUR_VM";
 
     private static String DB_URL = "jdbc:mysql://" + ((DB_CHOICE != null) ?
             (DB_CHOICE + ":3306/") :
