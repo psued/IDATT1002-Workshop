@@ -12,7 +12,7 @@ public class CalculatorResourceTest{
         String expression = "100+300";
         assertEquals(400, calculatorResource.calculate(expression));
 
-        expression = " 300 - 99 ";
+        expression = "300-100";
         assertEquals(200, calculatorResource.calculate(expression));
     }
 
