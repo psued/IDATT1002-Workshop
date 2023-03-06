@@ -73,6 +73,11 @@ public class CalculatorResource {
         return number1 - number2;
     }
 
+    /**
+     * Method used to calculate a multiplication expression.
+     * @param expression the expression to be calculated as a String
+     * @return the answer as an int
+     */
     public int multiplication(String expression) {
         String[] split = expression.split("[*]");
 
@@ -82,6 +87,11 @@ public class CalculatorResource {
         return number1 * number2;
     }
 
+    /**
+     * Method used to calculate a division expression.
+     * @param expression the expression to be calculated as a String
+     * @return the answer as an int
+     */
     public int division(String expression) {
         String[] split = expression.split("[/]");
 
