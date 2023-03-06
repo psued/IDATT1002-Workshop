@@ -27,10 +27,10 @@ public class CalculatorResourceTest{
         CalculatorResource calculatorResource = new CalculatorResource();
 
         String expression = "100+300";
-        assertEquals(400, calculatorResource.sum(expression));
+        assertEquals("400", calculatorResource.sum(expression));
 
         expression = "300+99";
-        assertEquals(399, calculatorResource.sum(expression));
+        assertEquals("399", calculatorResource.sum(expression));
     }
 
     @Test
@@ -38,10 +38,10 @@ public class CalculatorResourceTest{
         CalculatorResource calculatorResource = new CalculatorResource();
 
         String expression = "999-100";
-        assertEquals(899, calculatorResource.subtraction(expression));
+        assertEquals("899", calculatorResource.subtraction(expression));
 
         expression = "20-2";
-        assertEquals(18, calculatorResource.subtraction(expression));
+        assertEquals("18", calculatorResource.subtraction(expression));
     }
 
     @Test
