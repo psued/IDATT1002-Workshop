@@ -39,6 +39,8 @@ public class CalculatorResource {
          */
         if(expressionTrimmed.matches("[0-9]+[+][0-9]+")) result = sum(expressionTrimmed);
         else if(expressionTrimmed.matches("[0-9]+[-][0-9]+")) result = subtraction(expressionTrimmed);
+        else if(expressionTrimmed.matches("[0-9]+[*][0-9]+")) result = multiplication(expressionTrimmed);
+        else if(expressionTrimmed.matches("[0-9]+[/][0-9]+")) result = division(expressionTrimmed);
 
         return result;
     }
@@ -69,5 +71,23 @@ public class CalculatorResource {
         int number2 = Integer.parseInt(split[1]);
 
         return number1 - number2;
+    }
+
+    public int multiplication(String expression) {
+        String[] split = expression.split("[*]");
+
+        int number1 = Integer.parseInt(split[0]);
+        int number2 = Integer.parseInt(split[1]);
+
+        return number1 * number2;
+    }
+
+    public int division(String expression) {
+        String[] split = expression.split("[/]");
+
+        int number1 = Integer.parseInt(split[0]);
+        int number2 = Integer.parseInt(split[1]);
+
+        return number1 / number2;
     }
 }
