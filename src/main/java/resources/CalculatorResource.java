@@ -34,13 +34,15 @@ public class CalculatorResource {
          * [+]: the operator + one time.
          * The total regex expression accepts for example:
          * 12+34,
-         * 1+2,
+         * 1+2
          * 10000+1000
+         *
+         *  ^\\d+(?:\\s*[+]\\s*\\d+)*$
          */
-        if(expressionTrimmed.matches("[0-9]+[+][0-9]+")) result = sum(expressionTrimmed);
-        else if(expressionTrimmed.matches("[0-9]+[-][0-9]+")) result = subtraction(expressionTrimmed);
-        else if(expressionTrimmed.matches("[0-9]+[*][0-9]+")) result = multiplication(expressionTrimmed);
-        else if(expressionTrimmed.matches("[0-9]+[/][0-9]+")) result = division(expressionTrimmed);
+        if(expressionTrimmed.matches("^\\d+(?:\\s*[+]\\s*\\d+)*$")) result = sum(expressionTrimmed);
+        else if(expressionTrimmed.matches("^\\d+(?:\\s*[-]\\s*\\d+)*$")) result = subtraction(expressionTrimmed);
+        else if(expressionTrimmed.matches("^\\d+(?:\\s*[*]\\s*\\d+)*$")) result = multiplication(expressionTrimmed);
+        else if(expressionTrimmed.matches("^\\d+(?:\\s*[/]\\s*\\d+)*$")) result = division(expressionTrimmed);
 
         return result;
     }
@@ -52,11 +54,13 @@ public class CalculatorResource {
      */
     public int sum(String expression){
         String[] split = expression.split("[+]");
+        int sum = 0;
+        for (int i = 0; i < split.length; i++) {
+            split[i] = split[i].trim();
+            sum += Integer.parseInt(split[i]);
 
-        int number1 = Integer.parseInt(split[0]);
-        int number2 = Integer.parseInt(split[1]);
-
-        return number1 + number2;
+        }
+        return sum;
     }
 
     /**
@@ -66,11 +70,12 @@ public class CalculatorResource {
      */
     public int subtraction(String expression){
         String[] split = expression.split("[-]");
-
-        int number1 = Integer.parseInt(split[0]);
-        int number2 = Integer.parseInt(split[1]);
-
-        return number1 - number2;
+        int result = Integer.parseInt(split[0]);
+        for (int i = 1; i < split.length; i++) {
+            split[i] = split[i].trim();
+            result -= Integer.parseInt(split[i]);
+        }
+        return result;
     }
 
     /**
@@ -80,11 +85,13 @@ public class CalculatorResource {
      */
     public int multiplication(String expression) {
         String[] split = expression.split("[*]");
+        int result = Integer.parseInt(split[0]);
+        for (int i = 1; i < split.length; i++) {
+            split[i] = split[i].trim();
+            result *= Integer.parseInt(split[i]);
+        }
+        return result;
 
-        int number1 = Integer.parseInt(split[0]);
-        int number2 = Integer.parseInt(split[1]);
-
-        return number1 * number2;
     }
 
     /**
@@ -94,10 +101,11 @@ public class CalculatorResource {
      */
     public int division(String expression) {
         String[] split = expression.split("[/]");
-
-        int number1 = Integer.parseInt(split[0]);
-        int number2 = Integer.parseInt(split[1]);
-
-        return number1 / number2;
+        int result = Integer.parseInt(split[0]);
+        for (int i = 1; i < split.length; i++) {
+            split[i] = split[i].trim();
+            result /= Integer.parseInt(split[i]);
+        }
+    return result;
     }
 }
