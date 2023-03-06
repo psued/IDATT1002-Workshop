@@ -12,18 +12,19 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/calculator")
 public class CalculatorResource {
 
-    /**
-     * Method handling HTTP POST requests. The calculated answer to the expression will be sent to the client as
-     * plain/text.
-     * @param expression the expression to be solved as plain/text.
-     * @return solution to the expression as plain/text or -1 on error
-     */
-    @POST
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.TEXT_PLAIN)
-    public int calculate(String expression){
+        /**
+         * Method handling HTTP POST requests. The calculated answer to the expression will be sent to the client as
+         * plain/text.
+         *
+         * @param expression the expression to be solved as plain/text.
+         * @return solution to the expression as plain/text or -1 on error
+         */
+        @POST
+        @Consumes(MediaType.TEXT_PLAIN)
+        @Produces(MediaType.TEXT_PLAIN)
+        public int calculate (String expression){
         // Removes all whitespaces
-        String expressionTrimmed = expression.replaceAll("\\s+","");
+        String expressionTrimmed = expression.replaceAll("\\s+", "");
 
         int result = -1;
 
@@ -39,73 +40,79 @@ public class CalculatorResource {
          *
          *  ^\\d+(?:\\s*[+]\\s*\\d+)*$
          */
-        if(expressionTrimmed.matches("^\\d+(?:\\s*[+]\\s*\\d+)*$")) result = sum(expressionTrimmed);
-        else if(expressionTrimmed.matches("^\\d+(?:\\s*[-]\\s*\\d+)*$")) result = subtraction(expressionTrimmed);
-        else if(expressionTrimmed.matches("^\\d+(?:\\s*[*]\\s*\\d+)*$")) result = multiplication(expressionTrimmed);
-        else if(expressionTrimmed.matches("^\\d+(?:\\s*[/]\\s*\\d+)*$")) result = division(expressionTrimmed);
-
+        if (expressionTrimmed.matches("^\\d+(?:\\s*[+]\\s*\\d+)*$")) result = Integer.parseInt(sum(expressionTrimmed));
+        else if (expressionTrimmed.matches("^\\d+(?:\\s*[-]\\s*\\d+)*$")) result = Integer.parseInt(subtraction(expressionTrimmed));
+        else if (expressionTrimmed.matches("^\\d+(?:\\s*[*]\\s*\\d+)*$"))
+            result = Integer.parseInt(multiplication(expressionTrimmed));
+        else if (expressionTrimmed.matches("^\\d+(?:\\s*[/]\\s*\\d+)*$")) result = Integer.parseInt(division(expressionTrimmed));
+        else {
+           throw new IllegalArgumentException("Invalid expression");
+        }
         return result;
     }
 
-    /**
-     * Method used to calculate a sum expression.
-     * @param expression the equation to be calculated as a String
-     * @return the answer as an int
-     */
-    public int sum(String expression){
+        /**
+         * Method used to calculate a sum expression.
+         * @param expression the equation to be calculated as a String
+         * @return the answer as an int
+         */
+        public String sum (String expression){
         String[] split = expression.split("[+]");
-        int sum = 0;
+        int result = 0;
         for (int i = 0; i < split.length; i++) {
             split[i] = split[i].trim();
-            sum += Integer.parseInt(split[i]);
+            result += Integer.parseInt(split[i]);
 
         }
-        return sum;
+        return Integer.toString(result);
     }
 
-    /**
-     * Method used to calculate a subtraction expression.
-     * @param expression the expression to be calculated as a String
-     * @return the answer as an int
-     */
-    public int subtraction(String expression){
+        /**
+         * Method used to calculate a subtraction expression.
+         * @param expression the expression to be calculated as a String
+         * @return the answer as an int
+         */
+        public String subtraction (String expression){
         String[] split = expression.split("[-]");
         int result = Integer.parseInt(split[0]);
         for (int i = 1; i < split.length; i++) {
             split[i] = split[i].trim();
             result -= Integer.parseInt(split[i]);
         }
-        return result;
+        return Integer.toString(result);
     }
 
-    /**
-     * Method used to calculate a multiplication expression.
-     * @param expression the expression to be calculated as a String
-     * @return the answer as an int
-     */
-    public int multiplication(String expression) {
+        /**
+         * Method used to calculate a multiplication expression.
+         *
+         * @param expression the expression to be calculated as a String
+         * @return the answer as an int
+         */
+        public String multiplication (String expression){
         String[] split = expression.split("[*]");
         int result = Integer.parseInt(split[0]);
         for (int i = 1; i < split.length; i++) {
             split[i] = split[i].trim();
             result *= Integer.parseInt(split[i]);
         }
-        return result;
+        return Integer.toString(result);
 
     }
 
-    /**
-     * Method used to calculate a division expression.
-     * @param expression the expression to be calculated as a String
-     * @return the answer as an int
-     */
-    public int division(String expression) {
+        /**
+         * Method used to calculate a division expression.
+         * @param expression the expression to be calculated as a String
+         * @return the answer as an int
+         */
+        public String division (String expression){
         String[] split = expression.split("[/]");
         int result = Integer.parseInt(split[0]);
         for (int i = 1; i < split.length; i++) {
             split[i] = split[i].trim();
             result /= Integer.parseInt(split[i]);
         }
-    return result;
+        return Integer.toString(result);
     }
-}
+    }
+
+
