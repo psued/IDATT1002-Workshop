@@ -10,27 +10,31 @@ public class CalculatorResourceTest{
         CalculatorResource calculatorResource = new CalculatorResource();
 
         String expression = "100+300";
-        assertEquals(400, calculatorResource.calculate(expression));
+        assertEquals("400", calculatorResource.calculate(expression));
 
         expression = "300-100";
-        assertEquals(200, calculatorResource.calculate(expression));
+        assertEquals("200", calculatorResource.calculate(expression));
         
         expression = "300*100";
-        assertEquals(30000, calculatorResource.calculate(expression));
+        assertEquals("30000", calculatorResource.calculate(expression));
         
         expression = "300/100";
-        assertEquals(3, calculatorResource.calculate(expression));
+        assertEquals("3", calculatorResource.calculate(expression));
+        
+        expression = "100+300-100";
+        assertEquals("Error: Invalid expression.", calculatorResource.calculate(expression));
     }
+    
 
     @Test
     public void testSum(){
         CalculatorResource calculatorResource = new CalculatorResource();
 
         String expression = "100+300";
-        assertEquals("400", calculatorResource.sum(expression));
-
-        expression = "300+99";
-        assertEquals("399", calculatorResource.sum(expression));
+        assertEquals(400, calculatorResource.sum(expression));
+        
+        expression = "50+300+150+1000";
+        assertEquals(1500, calculatorResource.sum(expression));
     }
 
     @Test
@@ -38,25 +42,31 @@ public class CalculatorResourceTest{
         CalculatorResource calculatorResource = new CalculatorResource();
 
         String expression = "999-100";
-        assertEquals("899", calculatorResource.subtraction(expression));
-
-        expression = "20-2";
-        assertEquals("18", calculatorResource.subtraction(expression));
+        assertEquals(899, calculatorResource.subtraction(expression));
+    
+        expression = "1000-300-150-50";
+        assertEquals(500, calculatorResource.subtraction(expression));
     }
-
+    
     @Test
-    void additionTwoTimes() {
+    void multiplicationTest() {
         CalculatorResource calculatorResource = new CalculatorResource();
+        
+        String expression = "100*300";
+        assertEquals(30000, calculatorResource.multiplication(expression));
 
-        String expression = "50+300+150";
-        assertEquals(500, calculatorResource.calculate(expression));
+        expression = "100*300*100";
+        assertEquals(3000000, calculatorResource.multiplication(expression));
     }
-
+    
     @Test
-    void multiplicationAndDivision() {
+    void divisionTest() {
         CalculatorResource calculatorResource = new CalculatorResource();
+        
+        String expression = "1000/100";
+        assertEquals(10, calculatorResource.division(expression));
 
-        String expression = "100*300*100";
-        assertEquals(3000000, calculatorResource.calculate(expression));
+        expression = "1000/100/10";
+        assertEquals(1, calculatorResource.division(expression));
     }
 }
