@@ -8,7 +8,9 @@ document.getElementById("cancelButton").addEventListener("click", function(){
  */
 function editUser (event) {
     event.preventDefault();
-    let newInformation = {};
+    newUsername = document.getElementById("newUsername").value;
+    newPassword = document.getElementById("newPassword").value;
+    let newInformation = {newUsername, newPassword};
 
     fetch('../api/user/'+sessionStorage.getItem("userId"), {
         method: "PUT",
@@ -18,6 +20,7 @@ function editUser (event) {
         .then(response => response.json())
         .then(response => {
             if (response === true) {
+                sessionStorage.setItem("username", newUsername);
                 alert("Bruker oppdatert");
                 window.location.href = "../app.html";
             } else {
@@ -26,3 +29,7 @@ function editUser (event) {
         })
         .catch(error => console.error(error));
 }
+
+// id="newUsername"
+// id="newPassword"
+
