@@ -156,7 +156,10 @@ public class GroupChatDAOTest extends JerseyTest {
   @Test
   public void testAddGroupChat() {
     GroupChat groupChat = new GroupChat();
+    ArrayList<User> users = new ArrayList<>();
+    users.add(new User());
     groupChat.setGroupChatName("test groupchat");
+    groupChat.setUserList(users);
 
     groupChatDAO.addGroupChat(groupChat);
 

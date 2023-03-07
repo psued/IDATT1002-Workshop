@@ -11,11 +11,14 @@ public class GroupChat {
   private ArrayList<Message> messageList;
   private ArrayList<User> userList;
 
-  public GroupChat(){}
+  public GroupChat() {
+  }
 
-  public GroupChat(int groupChatId, String groupChatName){
+  public GroupChat(int groupChatId, String groupChatName) {
     this.groupChatId = groupChatId;
     this.groupChatName = groupChatName;
+    messageList = new ArrayList<Message>();
+    userList = new ArrayList<User>();
   }
 
   public int getGroupChatId() {
