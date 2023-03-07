@@ -1,5 +1,6 @@
 package resources;
 
+import dao.GroupChatDAO;
 import data.GroupChat;
 
 import jakarta.ws.rs.*;
@@ -20,7 +21,8 @@ public class GroupChatResource {
     @Path ("{groupChatId}")
     @Produces (MediaType.APPLICATION_JSON)
     public GroupChat getGroupChat(@PathParam("groupChatId") int groupChatId){
-        return null;
+        GroupChatDAO groupChatDAO = new GroupChatDAO();
+        return groupChatDAO.getGroupChatId(groupChatId);
     }
 
 }
