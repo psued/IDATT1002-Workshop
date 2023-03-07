@@ -3,6 +3,7 @@ import dao.UserDAO;
 import data.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 public class UserDAOTest {
@@ -182,5 +184,58 @@ public class UserDAOTest {
         String actualUsername = user.getUsername();
         assertEquals(expectedUsername,actualUsername);
         assertNotEquals(beforeNewUser,afterNewUser);
+    }
+    
+    @Test
+    public void testSaltGeneration () {
+        byte[] salt1 = userDAO.generateSalt();
+        byte[] salt2 = userDAO.generateSalt();
+        assertNotEquals(salt1, salt2);
+    }
+    
+    @Nested
+    class testPasswordHashing {
+        @Test
+        public void testHashing () {
+            String password = "password";
+            byte[] salt = userDAO.generateSalt();
+            String hashedPassword = userDAO.hashPassword(password, salt);
+            assertNotEquals(password, hashedPassword);
+        }
+        
+        @Test
+        public void identicalPasswordAndSalt () {
+            String password = "password";
+            byte[] salt = userDAO.generateSalt();
+            
+            String hashedPassword1 = userDAO.hashPassword(password, salt);
+            String hashedPassword2 = userDAO.hashPassword(password, salt);
+            
+            assertEquals(hashedPassword1, hashedPassword2);
+        }
+        
+        @Test
+        public void differentPasswordSameSalt () {
+            String password1 = "password1";
+            String password2 = "password2";
+            byte[] salt = userDAO.generateSalt();
+            
+            String hashedPassword1 = userDAO.hashPassword(password1, salt);
+            String hashedPassword2 = userDAO.hashPassword(password2, salt);
+            
+            assertNotEquals(hashedPassword1, hashedPassword2);
+        }
+        
+        @Test
+        public void samePasswordDifferentSalt () {
+            String password = "password";
+            byte[] salt1 = userDAO.generateSalt();
+            byte[] salt2 = userDAO.generateSalt();
+            
+            String hashedPassword1 = userDAO.hashPassword(password, salt1);
+            String hashedPassword2 = userDAO.hashPassword(password, salt2);
+            
+            assertNotEquals(hashedPassword1, hashedPassword2);
+        }
     }
 }
