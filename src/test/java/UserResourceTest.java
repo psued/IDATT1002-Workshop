@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class UserResourceTest extends JerseyTest {
     private final UserResource userResource = new UserResource();
@@ -43,14 +44,13 @@ public class UserResourceTest extends JerseyTest {
         assertEquals("application/json",output.getHeaderString("Content-type"));
     }
 
-    /*
     @Test
     public void testEditUser () {
         user2.setUserId(10);
         user2.setUsername("test");
         Response output = target("user/"+2).request().put(Entity.entity(user2, MediaType.APPLICATION_JSON));
-        assertEquals("Should return status 200", 200, output.getStatus());
+        assertEquals(200, output.getStatus(), "Should return status 200");
         assertEquals("application/json",output.getHeaderString("Content-type"));
         assertNotEquals("testUsername",user2.getUsername());
-    }*/
+    }
 }
