@@ -268,3 +268,8 @@ websockets.
 | 3308      | Database til lokal testing        |
 | 8070      | Adminer (Databaseklient)          |
 | 8080      | Jenkins                           |
+
+
+VM ip: 129.241.97.162
+
+VM passord: y#2!U3B7aDg
