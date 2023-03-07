@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 public class UserDAOTest {
@@ -182,5 +183,12 @@ public class UserDAOTest {
         String actualUsername = user.getUsername();
         assertEquals(expectedUsername,actualUsername);
         assertNotEquals(beforeNewUser,afterNewUser);
+    }
+    
+    @Test
+    public void testSaltGeneration () {
+        byte[] salt1 = userDAO.generateSalt();
+        byte[] salt2 = userDAO.generateSalt();
+        assertNotEquals(salt1, salt2);
     }
 }

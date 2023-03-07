@@ -184,7 +184,7 @@ public class UserDAO {
      * @return a random salt
      */
     public byte[] generateSalt() {
-        return null;
+        return java.security.SecureRandom.getSeed(16);
     }
 
     /**
