@@ -71,5 +71,5 @@ class ChatSimulation extends Simulation {
           | "messageContent":"Hei fra gatling"
           |}""".stripMargin)))
 
-  setUp(scn.inject(atOnceUsers(50))).protocols(httpProtocol)
+  setUp(scn.inject(atOnceUsers(300))).protocols(httpProtocol)
 }
