@@ -2,10 +2,8 @@ package dao;
 
 import data.User;
 
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -188,13 +186,25 @@ public class UserDAO {
     }
 
     /**
-     * Method to hash a password with salt
+     * Method to hash a password with salt using SHA-256
      * @param password password to be hashed
      * @param salt salt to use when hashing
      * @return hashedPassword, null if unsuccessful
      */
     public String hashPassword(String password, byte[] salt) {
-        return null;
+        byte[] saltedPassword = (password + salt.toString()).getBytes();
+        byte[] bytes = new byte[0];
+        try {
+            bytes = MessageDigest.getInstance("SHA-256").digest(saltedPassword);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < bytes.length; i++){
+            stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        return stringBuilder.toString();
     }
 
     /**
